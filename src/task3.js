@@ -2,34 +2,40 @@
 
 // Task #3
 
-const country = 'Индия';
-// const country = prompt(
-//   'Введите регион доставки - Китай,Южная Америка, Австралия, Индия, Ямайка',
-// );
-
+const country = prompt(
+  'Введите регион доставки - Китай,Южная Америка, Австралия, Индия, Ямайка',
+);
 let costOfDelivery;
 switch (country.toLowerCase()) {
-  case 'Китай'.toLowerCase():
+  case 'китай':
     costOfDelivery = 100;
-    alert(`Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`);
+    console.log(
+      `Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`,
+    );
     break;
-  case 'Южная Америка'.toLowerCase():
+  case 'южная америка':
     costOfDelivery = 250;
-    alert(
+    console.log(
       `Доставка в ${country.toUpperCase()}. будет стоить ${costOfDelivery}`,
     );
     break;
-  case 'Австралия':
+  case 'австралия':
     costOfDelivery = 170;
-    alert(`Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`);
+    console.log(
+      `Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`,
+    );
     break;
-  case 'Индия'.toLowerCase():
+  case 'индия':
     costOfDelivery = 80;
-    alert(`Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`);
+    console.log(
+      `Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`,
+    );
     break;
-  case 'Ямайка'.toLowerCase():
+  case 'ямайка':
     costOfDelivery = 120;
-    alert(`Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`);
+    console.log(
+      `Доставка в ${country.toUpperCase()} будет стоить ${costOfDelivery}`,
+    );
     break;
   default:
     console.log('В вашей стране доставка не доступна');

@@ -4,13 +4,12 @@
 
 const credits = 23580;
 const pricePerDroid = 3000;
-const quantity = 3;
+const quantity = prompt('Какое количство дройдов вы хотите купить?');
 const totalPrice = quantity * pricePerDroid;
-console.log(totalPrice);
-if (totalPrice >= credits) {
-  alert('Недостаточно средств на счету!');
+if (totalPrice > credits) {
+  console.log('Недостаточно средств на счету!');
 } else {
-  alert(
+  console.log(
     `Вы купили ${quantity} дроидов, на счету осталось ${credits -
       totalPrice} кредитов.`,
   );
