@@ -4,7 +4,8 @@ const numbers = [];
 let total = 0;
 while (input !== null) {
   input = prompt('Введите число');
-  if (!Number.isNaN(Number(input))) {
+  if (Number(input) === 0) {
+  } else if (!Number.isNaN(Number(input))) {
     numbers.push(Number(input));
   } else {
     alert('Было введено не число, попробуйте еще раз');
