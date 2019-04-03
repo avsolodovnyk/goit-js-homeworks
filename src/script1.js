@@ -2,19 +2,19 @@
 let input;
 const numbers = [];
 let total = 0;
-do {
+while (input !== null) {
   input = prompt('Введите число');
-  if (isNaN(input)) {
+  if (!Number.isNaN(Number(input))) {
+    numbers.push(Number(input));
+  } else {
     alert('Было введено не число, попробуйте еще раз');
-  } else if (input !== null) {
-    numbers.push(input);
   }
-} while (input !== null);
-if (numbers.length !== 0) {
-  for (let i = 0; i < numbers.length; i += 1) {
-    total = Number(total) + Number(numbers[i]);
-  }
-  console.log(total);
-} else {
+}
+if (numbers.length == 0) {
   alert('Массив пустой');
+} else {
+  for (let variable of numbers) {
+    total = total + variable;
+  }
+  console.log('сумма введенных чисел=', total);
 }
