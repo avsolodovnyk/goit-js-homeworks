@@ -10,7 +10,7 @@ while (input !== null) {
     alert('Было введено не число, попробуйте еще раз');
   }
 }
-if (numbers.length == 0) {
+if (numbers.length === 0) {
   alert('Массив пустой');
 } else {
   for (let variable of numbers) {
