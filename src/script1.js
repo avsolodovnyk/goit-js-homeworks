@@ -4,18 +4,19 @@ const numbers = [];
 let total = 0;
 while (input !== null) {
   input = prompt('Введите число');
-  if (Number(input) === 0) {
-  } else if (!Number.isNaN(Number(input))) {
-    numbers.push(Number(input));
+  if (input === null) {
+    break;
+  } else if (!Number.isNaN(+input)) {
+    numbers.push(+input);
   } else {
     alert('Было введено не число, попробуйте еще раз');
   }
 }
-if (numbers.length === 0) {
+if (!numbers.length) {
   alert('Массив пустой');
 } else {
   for (let variable of numbers) {
     total = total + variable;
   }
-  console.log('сумма введенных чисел=', total);
+  console.log(`сумма введенных чисел равна  ${total}`);
 }
