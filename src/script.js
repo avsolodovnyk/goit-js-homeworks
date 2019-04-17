@@ -6,9 +6,7 @@ const notepad = {
   },
   findNoteById(id) {
     for (const note of this.notes) {
-      console.log(note);
-      const { id: idNote } = note;
-      if (id === idNote) {
+      if (id === note.id) {
         return note;
       }
     }
@@ -18,16 +16,12 @@ const notepad = {
     return note;
   },
   deleteNote(id) {
-    for (let i = 0; i < this.notes.length; i += 1) {
-      if (this.notes[i].id === id) {
-        delete this.notes[i];
-      }
-    }
+    this.notes.splice(this.notes.indexOf(this.findNoteById(id)), 1);
   },
   updateNoteContent(id, updatedContent) {
-    for (let i = 0; i < this.notes.length; i += 1) {
-      if (this.notes[i].id === id) {
-        this.notes[i] = { ...this.notes[i], ...updatedContent };
+    for (let note of this.notes) {
+      if (note.id === id) {
+        this.notes[this.notes.indexOf(note)] = { ...note, ...updatedContent };
       }
     }
   },
@@ -41,10 +35,10 @@ const notepad = {
   filterNotesByQuery(query) {
     const arr = [];
     for (const note of this.notes) {
-      let arrAllValues = [...Object.values(note), ...Object.keys(note)]
-        .join(' ')
-        .toLowerCase();
-      if (arrAllValues.includes(query.toLowerCase())) {
+      if (
+        note.title.toLowerCase().includes(query.toLowerCase()) ||
+        note.body.toLowerCase().includes(query.toLowerCase())
+      ) {
         arr.push(note);
       }
     }
