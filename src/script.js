@@ -41,10 +41,7 @@ const notepad = {
   filterNotesByQuery(query) {
     const arr = [];
     for (const note of this.notes) {
-      let arrAllValues = Object.values(note);
-      const arrKeys = Object.keys(note);
-      arrAllValues = arrAllValues
-        .concat(arrKeys)
+      let arrAllValues = [...Object.values(note), ...Object.keys(note)]
         .join(' ')
         .toLowerCase();
       if (arrAllValues.includes(query.toLowerCase())) {
