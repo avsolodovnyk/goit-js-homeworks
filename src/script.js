@@ -5,8 +5,8 @@ const notepad = {
     return this.notes;
   },
   findNoteById(id) {
-    for (const note of this.notes) {
-      if (id === note.id) {
+    for (let note of this.notes) {
+      if (note.id === id) {
         return note;
       }
     }
@@ -19,18 +19,15 @@ const notepad = {
     this.notes.splice(this.notes.indexOf(this.findNoteById(id)), 1);
   },
   updateNoteContent(id, updatedContent) {
-    for (let note of this.notes) {
-      if (note.id === id) {
-        this.notes[this.notes.indexOf(note)] = { ...note, ...updatedContent };
-      }
-    }
+    this.notes[this.notes.indexOf(this.findNoteById(id))] = {
+      ...this.findNoteById(id),
+      ...updatedContent,
+    };
   },
   updateNotePriority(id, priority) {
-    for (let i = 0; i < this.notes.length; i += 1) {
-      if (this.notes[i].id === id) {
-        this.notes[i].priority = priority;
-      }
-    }
+    this.notes[this.notes.indexOf(this.findNoteById(id))][
+      'priority'
+    ] = priority;
   },
   filterNotesByQuery(query) {
     const arr = [];
@@ -60,9 +57,6 @@ const Priority = {
   HIGH: 2,
 };
 
-/*
- * Добавляю 4 заметки и смотрю что получилось
- */
 notepad.saveNote({
   id: 'id-1',
   title: 'JavaScript essentials',
@@ -130,7 +124,7 @@ console.log(
  */
 console.log(
   'Отфильтровали заметки по ключевому слову "javascript": ',
-  notepad.filterNotesByQuery('Javascript'),
+  notepad.filterNotesByQuery('javascript'),
 );
 
 /*
