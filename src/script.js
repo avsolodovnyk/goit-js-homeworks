@@ -1,59 +1,60 @@
 'use strict';
-const Notepad = function Notepad(notes = []) {
+const Notepad = function Notepad1(notes = []) {
   this.notes = notes;
+  this.getNotes = function() {
+    return this.notes;
+  };
+  this.findNoteById = function(id) {
+    for (let note of this.notes) {
+      if (note.id === id) {
+        return note;
+      }
+    }
+  };
+  this.saveNote = function(note) {
+    this.notes.push(note);
+    return note;
+  };
+  this.deleteNote = function(id) {
+    this.notes.splice(this.notes.indexOf(this.findNoteById(id)), 1);
+  };
+  this.updateNoteContent = function(id, updatedContent) {
+    this.notes[this.notes.indexOf(this.findNoteById(id))] = {
+      ...this.findNoteById(id),
+      ...updatedContent,
+    };
+  };
+  this.updateNotePriority = function(id, priority) {
+    this.findNoteById(id).priority = priority;
+  };
+  this.filterNotesByQuery = function(query) {
+    const arr = [];
+    for (const note of this.notes) {
+      if (
+        note.title.toLowerCase().includes(query.toLowerCase()) ||
+        note.body.toLowerCase().includes(query.toLowerCase())
+      ) {
+        arr.push(note);
+      }
+    }
+    return arr;
+  };
+  this.filterNotesByPriority = function(priority) {
+    const arr = [];
+    for (const note of this.notes) {
+      if (note['priority'] === priority) {
+        arr.push(note);
+      }
+    }
+    return arr;
+  };
 };
 Notepad.Priority = {
   LOW: 0,
   NORMAL: 1,
   HIGH: 2,
 };
-Notepad.prototype.getNotes = function() {
-  return this.notes;
-};
-Notepad.prototype.findNoteById = function(id) {
-  for (let note of this.notes) {
-    if (note.id === id) {
-      return note;
-    }
-  }
-};
-Notepad.prototype.saveNote = function(note) {
-  this.notes.push(note);
-  return note;
-};
-Notepad.prototype.deleteNote = function(id) {
-  this.notes.splice(this.notes.indexOf(this.findNoteById(id)), 1);
-};
-Notepad.prototype.updateNoteContent = function(id, updatedContent) {
-  this.notes[this.notes.indexOf(this.findNoteById(id))] = {
-    ...this.findNoteById(id),
-    ...updatedContent,
-  };
-};
-Notepad.prototype.updateNotePriority = function(id, priority) {
-  this.findNoteById(id).priority = priority;
-};
-Notepad.prototype.filterNotesByQuery = function(query) {
-  const arr = [];
-  for (const note of this.notes) {
-    if (
-      note.title.toLowerCase().includes(query.toLowerCase()) ||
-      note.body.toLowerCase().includes(query.toLowerCase())
-    ) {
-      arr.push(note);
-    }
-  }
-  return arr;
-};
-Notepad.prototype.filterNotesByPriority = function(priority) {
-  const arr = [];
-  for (const note of this.notes) {
-    if (note['priority'] === priority) {
-      arr.push(note);
-    }
-  }
-  return arr;
-};
+
 const initialNotes = [
   {
     id: 'id-1',
