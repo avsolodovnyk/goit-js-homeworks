@@ -159,5 +159,3 @@ console.log(
  */
 notepad.deleteNote('id-2');
 console.log('Заметки после удаления с id -2: ', notepad.getNotes());
-console.dir(Notepad);
-console.log(Notepad);
