@@ -21,10 +21,7 @@ class Notepad {
     this._notes.splice(this._notes.indexOf(this.findNoteById(id)), 1);
   }
   updateNoteContent(id, updatedContent) {
-    this._notes[this._notes.indexOf(this.findNoteById(id))] = {
-      ...this.findNoteById(id),
-      ...updatedContent,
-    };
+    return Object.assign(this.findNoteById(id), updatedContent);
   }
   updateNotePriority(id, priority) {
     this.findNoteById(id).priority = priority;
